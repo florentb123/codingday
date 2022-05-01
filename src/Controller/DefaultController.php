@@ -9,12 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/default", name="app_default")
+     * @Route("/home", name="default")
      */
-    public function index(): Response
+    public function default(): Response
     {
         return $this->render('base.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
+    }
+    /**
+     * @Route("/", name="index")
+     */
+    public function index(): Response
+    {
+        return $this->redirectToRoute('default');
     }
 }
